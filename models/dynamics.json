@@ -1,0 +1,26 @@
+{
+    "@context": [
+        "/ontology/geometry/spatial-relations.json",
+        "/ontology/newtonian-rigid-body-dynamics.json",
+        "/ontology/qudt.json",
+        {
+            "rob": "http://example.org/my-robot#"
+        }
+    ],
+    "@id": "rob:dynamics",
+    "@graph": [
+        {
+            "@id": "rob:link2-inertia",
+            "@type": [ "RigidBodyInertia", "Mass", "RotationalInertia", "PrincipalMomentsOfInertiaXYZ" ],
+            "of-body": "rob:link2",
+            "reference-point": "rob:link2-root-origin",
+            "as-seen-by": "rob:link2-root",
+            "quantity-kind": [ "MomentOfInertia", "Mass" ],
+            "unit": [ "KiloGM-M2", "KiloGM" ],
+            "xx": 0.1,
+            "yy": 0.1,
+            "zz": 0.1,
+            "mass": 1.0
+        }
+    ]
+}

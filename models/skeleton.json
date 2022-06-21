@@ -1,0 +1,92 @@
+{
+    "@context": [
+        "/ontology/geometry/structural-entities.json",
+        {
+            "rob": "http://example.org/my-robot#"
+        }
+    ],
+    "@id": "rob:skeleton",
+    "@graph": [
+        {
+            "@id": "rob:link1-joint1-origin",
+            "@type": [ "3D", "Euclidean", "Point" ]
+        },
+        {
+            "@id": "rob:link2-root-origin",
+            "@type": [ "3D", "Euclidean", "Point" ]
+        },
+        {
+            "@id": "rob:link1-joint1-x",
+            "@type": [ "3D", "Euclidean", "Vector", "BoundVector", "UnitLength" ],
+            "start": "rob:link1-joint1-origin"
+        },
+        {
+            "@id": "rob:link1-joint1-y",
+            "@type": [ "3D", "Euclidean", "Vector", "BoundVector", "UnitLength" ],
+            "start": "rob:link1-joint1-origin"
+        },
+        {
+            "@id": "rob:link1-joint1-z",
+            "@type": [ "3D", "Euclidean", "Vector", "BoundVector", "UnitLength" ],
+            "start": "rob:link1-joint1-origin"
+        },
+        {
+            "@id": "rob:link2-root-x",
+            "@type": [ "3D", "Euclidean", "Vector", "BoundVector", "UnitLength" ],
+            "start": "rob:link2-root-origin"
+        },
+        {
+            "@id": "rob:link2-root-y",
+            "@type": [ "3D", "Euclidean", "Vector", "BoundVector", "UnitLength" ],
+            "start": "rob:link2-root-origin"
+        },
+        {
+            "@id": "rob:link2-root-z",
+            "@type": [ "3D", "Euclidean", "Vector", "BoundVector", "UnitLength" ],
+            "start": "rob:link2-root-origin"
+        },
+        {
+            "@id": "rob:link1-root",
+            "@type": [ "3D", "Euclidean", "Frame", "Orthonormal", "RigidBody", "RightHanded" ]
+        },
+        {
+            "@id": "rob:link1-joint1",
+            "@type": [ "3D", "Euclidean", "Frame", "Orthonormal", "RigidBody", "RightHanded", "OriginVectorsXYZ" ],
+            "origin": "rob:link1-joint1-origin",
+            "vector-x": "rob:link1-joint1-x",
+            "vector-y": "rob:link1-joint1-y",
+            "vector-z": "rob:link1-joint1-z"
+        },
+        {
+            "@id": "rob:link2-root",
+            "@type": [ "3D", "Euclidean", "Frame", "Orthonormal", "RigidBody", "RightHanded", "OriginVectorsXYZ" ],
+            "origin": "rob:link2-root-origin",
+            "vector-x": "rob:link2-root-x",
+            "vector-y": "rob:link2-root-y",
+            "vector-z": "rob:link2-root-z"
+        },
+        {
+            "@id": "rob:link1",
+            "@type": [ "SimplicialComplex", "RigidBody" ],
+            "simplices": [
+                "rob:link1-root",
+                "rob:link1-joint1",
+                "rob:link1-joint1-origin",
+                "rob:link1-joint1-x",
+                "rob:link1-joint1-y",
+                "rob:link1-joint1-z"
+            ]
+        },
+        {
+            "@id": "rob:link2",
+            "@type": [ "SimplicialComplex", "RigidBody" ],
+            "simplices": [
+                "rob:link2-root",
+                "rob:link2-root-origin",
+                "rob:link2-root-x",
+                "rob:link2-root-y",
+                "rob:link2-root-z"
+            ]
+        }
+    ]
+}

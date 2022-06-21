@@ -1,0 +1,36 @@
+{
+    "@context": [
+        "/ontology/geometry/coordinates.json",
+        "/ontology/qudt.json",
+        {
+            "rob": "http://example.org/my-robot#"
+        }
+    ],
+    "@id": "rob:cartesian-coordinates",
+    "@graph": [
+        {
+            "@id": "rob:pose-link1-joint1-wrt-link1-root-coord",
+            "@type": [ "3D", "Euclidean", "PoseReference", "PoseCoordinate", "DirectionCosineXYZ", "VectorXYZ" ],
+            "of-pose": "rob:pose-link1-joint1-wrt-link1-root",
+            "as-seen-by": "rob:link1-root",
+            "unit": [ "UNITLESS", "M" ],
+            "direction-cosine-x": [ 0.0, 0.0, 1.0 ],
+            "direction-cosine-y": [ 0.0, 1.0, 0.0 ],
+            "direction-cosine-z": [ 1.0, 0.0, 0.0 ],
+            "x": 1.0,
+            "y": 2.0,
+            "z": 3.0
+        },
+        {
+            "@id": "rob:joint1-offset-coord",
+            "@type": [ "3D", "Euclidean", "PositionReference", "PositionCoordinate", "VectorXYZ" ],
+            "of-position": "rob:joint1-offset",
+            "with-respect-to": "rob:link1-joint1-origin",
+            "as-seen-by": "rob:link1-joint1",
+            "unit": "M",
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "@context": [
+        "/ontology/geometry/spatial-relations.json",
+        "/ontology/qudt.json",
+        {
+            "rob": "http://example.org/my-robot#"
+        }
+    ],
+    "@id": "rob:spatial-relations",
+    "@graph": [
+        {
+            "@id": "rob:pose-link1-joint1-wrt-link1-root",
+            "@type": "Pose",
+            "of": "rob:link1-joint1",
+            "with-respect-to": "rob:link1-root",
+            "quantity-kind": [ "Angle", "Length" ]
+        },
+        {
+            "@id": "rob:pose-link2-root-wrt-link1-joint1",
+            "@type": "Pose",
+            "of": "rob:link2-root",
+            "with-respect-to": "rob:link1-joint1",
+            "quantity-kind": [ "Angle", "Length" ]
+        },
+        {
+            "@id": "rob:joint1-offset",
+            "@type": "Position",
+            "of": "rob:link2-root-origin",
+            "with-respect-to": "rob:link1-joint1-origin",
+            "quantity-kind": "Length"
+        },
+        {
+            "@id": "rob:pose-link2-root-wrt-link1-root",
+            "@type": "Pose",
+            "of": "rob:link2-root",
+            "with-respect-to": "rob:link1-root",
+            "quantity-kind": [ "Angle", "Length" ]
+        },
+        {
+            "@id": "rob:joint1-common-axis",
+            "@type": "LineCollinearity",
+            "lines": [ "rob:link1-joint1-z", "rob:link2-root-z" ]
+        }
+    ]
+}
