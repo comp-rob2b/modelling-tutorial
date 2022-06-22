@@ -1,7 +1,7 @@
 {
     "@context": [
-        "/ontology/geometry/coordinates.json",
-        "/ontology/qudt.json",
+        "https://comp-rob2b.github.io/metamodels/geometry/coordinates.json",
+        "https://comp-rob2b.github.io/metamodels/qudt.json",
         {
             "rob": "https://comp-rob2b.github.io/modelling-tutorial/robot#"
         }

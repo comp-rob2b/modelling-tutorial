@@ -1,8 +1,8 @@
 {
     "@context": [
-        "/ontology/geometry/spatial-operators.json",
-        "/ontology/kinematic-chain/operators.json",
-        "/ontology/algorithm.json",
+        "https://comp-rob2b.github.io/metamodels/geometry/spatial-operators.json",
+        "https://comp-rob2b.github.io/metamodels/kinematic-chain/operators.json",
+        "https://comp-rob2b.github.io/metamodels/algorithm.json",
         {
             "rob": "https://comp-rob2b.github.io/modelling-tutorial/robot#"
         }

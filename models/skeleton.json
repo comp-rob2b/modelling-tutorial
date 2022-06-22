@@ -1,6 +1,6 @@
 {
     "@context": [
-        "/ontology/geometry/structural-entities.json",
+        "https://comp-rob2b.github.io/metamodels/geometry/structural-entities.json",
         {
             "rob": "https://comp-rob2b.github.io/modelling-tutorial/robot#"
         }

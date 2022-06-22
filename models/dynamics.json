@@ -1,8 +1,8 @@
 {
     "@context": [
-        "/ontology/geometry/spatial-relations.json",
-        "/ontology/newtonian-rigid-body-dynamics.json",
-        "/ontology/qudt.json",
+        "https://comp-rob2b.github.io/metamodels/geometry/spatial-relations.json",
+        "https://comp-rob2b.github.io/metamodels/newtonian-rigid-body-dynamics.json",
+        "https://comp-rob2b.github.io/metamodels/qudt.json",
         {
             "rob": "https://comp-rob2b.github.io/modelling-tutorial/robot#"
         }

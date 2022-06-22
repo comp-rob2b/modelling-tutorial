@@ -1,6 +1,6 @@
 {
     "@context": [
-        "/ontology/kinematic-chain/structural-entities.json",
+        "https://comp-rob2b.github.io/metamodels/kinematic-chain/structural-entities.json",
         {
             "rob": "https://comp-rob2b.github.io/modelling-tutorial/robot#"
         }
