@@ -1,0 +1,23 @@
+{
+    "@context": [
+        "/ontology/kinematic-chain/structural-entities.json",
+        {
+            "rob": "http://example.org/my-robot#"
+        }
+    ],
+    "@id": "rob:chain",
+    "@graph": [
+        {
+            "@id": "rob:joint1",
+            "@type": [ "Joint", "RevoluteJoint" ],
+            "between-attachments": [ "rob:link1-joint1", "rob:link2-root" ],
+            "common-axis": "rob:joint1-common-axis",
+            "origin-offset": "rob:joint1-offset"
+        },
+        {
+            "@id": "rob:kin-chain1",
+            "@type": "KinematicChain",
+            "joints": [ "rob:joint1" ]
+        }
+    ]
+}

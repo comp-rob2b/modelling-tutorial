@@ -1,0 +1,20 @@
+{
+    "@context": [
+        "/ontology/kinematic-chain/state.json",
+        "/ontology/qudt.json",
+        {
+            "rob": "http://example.org/my-robot#"
+        }
+    ],
+    "@id": "rob:chain",
+    "@graph": [
+        {
+            "@id": "rob:q1",
+            "@type": [ "JointReference", "RevoluteJointPosition", "RevoluteJointPositionCoordinate" ],
+            "of-joint": "rob:joint1",
+            "quantity-kind": "Angle",
+            "unit": "RAD",
+            "value": 2.0
+        }
+    ]
+}

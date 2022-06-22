@@ -363,6 +363,48 @@ just independent of a reference point or coordinate frame.
 }
 ```
 
+## Kinematic chain
+The [kinematic chain model](models/chain.json) shows two types of motion
+constraints. The joint is the most simple motion constraint between attachments
+such as frames on two bodies. In the following example we recognize this by the
+`between-attachments` property. More specifically the joint is a revolute joint
+as already mentioned before. Hence, two more properties are required: the
+`common-axis` around which the relative motion occurs and the `origin-offset`
+that defines the distance or position of the two frames' origins along the
+common axis.
+```JSON
+{
+    "@id": "rob:joint1",
+    "@type": [ "Joint", "RevoluteJoint" ],
+    "between-attachments": [
+        "rob:link1-joint1",
+        "rob:link2-root"
+    ],
+    "common-axis": "rob:joint1-common-axis",
+    "origin-offset": "rob:joint1-offset"
+}
+```
+
+The kinematic chain is a composite motion constraint with a set of joints as its
+property as seen below. For the 1-DoF example obviously only one joint is
+required. The kinematic chain imposes a semantic constraint that all referenced
+joints must be part of the same graph.
+```JSON
+{
+    "@id": "rob:kin-chain1",
+    "@type": "KinematicChain",
+    "joints": [ "rob:joint1" ]
+}
+```
+
+### Coordinates
+For a real robot the joint configuration can often, but not always, be directly
+acquired from sensors such as encoders associated with a joint. The model of
+such a sensor would be a higher-order relation that refers to the same
+attachments that are also used by the joint. In this tutorial however, we rely
+on a fixed value to represent the joint position as realized by the
+[joint coordinates model](models/joint-coordinates.json).
+
 ## Acknowledgement
 
 This work is part of a project that has received funding from the European
