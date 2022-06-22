@@ -1,3 +1,4 @@
 {
-    "author": "Sven Schneider"
+    "author": "Sven Schneider",
+    "abstract": "In this tutorial we show how to create composable models for robotic kinematic chains. Many of the concepts are reusable in different contexts. The models are meant as an interchange format between tools, including run-time interpretation by a robot, not as user-facing domain-specific languages. We establish *structural* models as compositions of semantically fully specified modelling primitives. Then we extend the structural models by *behavioural* models, that is, operators that act on the structural models.\n\nThis document has been automatically generated from the tutorial that is available via <https://github.com/comp-rob2b/sample-robot>."
 }
