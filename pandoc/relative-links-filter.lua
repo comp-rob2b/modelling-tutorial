@@ -3,7 +3,7 @@
 local url = require('socket.url')
 
 function prefix(path)
-  return 'https://github.com/comp-rob2b/sample-robot/tree/main/' .. path
+  return 'https://github.com/comp-rob2b/modelling-tutorial/tree/main/' .. path
 end
 
 function Link(element)
