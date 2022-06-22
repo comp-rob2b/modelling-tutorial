@@ -405,6 +405,54 @@ attachments that are also used by the joint. In this tutorial however, we rely
 on a fixed value to represent the joint position as realized by the
 [joint coordinates model](models/joint-coordinates.json).
 
+## Operators and algorithms
+Most modelling approaches for kinematic chains stop with a structural model
+similar to what we have discussed up to now. Such a model would then be
+interpreted by software to configure a solver for kinematics or dynamics
+queries. Hence, the source code of that software describes the kinematic chain's
+behaviour.
+
+In contrast, here we also establish an explicit model of such behaviour.
+[This model](models/fpk-algorithm.json) exemplifies a behavioural model of a
+simple forward position kinematics algorithm. To this end it employs two
+operators. The `ForwardPositionKinematics` for a single joint, as shown in the
+following textual representation, requires two input properties, namely a model
+of the `joint` and the `joint-space-motion` as discussed in the context of the
+[kinematic chain](#kinematic-chain). Given those two inputs, the operator
+computes the `cartesian-space-motion` as output which here is a symbolic pointer
+to a [pose relation](#spatial-relations).
+
+```JSON
+{
+    "@id": "rob:fpk1",
+    "@type": "ForwardPositionKinematics",
+    "joint": "rob:joint1",
+    "joint-space-motion": "rob:q1",
+    "cartesian-space-motion": "rob:pose-link2-root-wrt-link1-joint1"
+}
+```
+
+The second operator, `ComposePose`, composes the pose over the first link and
+the pose over the joint, the latter of which is computed by the forward position
+kinematics operator above. This results in the relative pose of the most
+distal frame "link1-root" with respect to the most proximal frame "link0-root".
+
+Both of the previous operators describe *what* to compute. However, the order of
+those computations is still missing: clearly, the forward position kinematics
+must be evaluated before the composition of the poses as there exists a data
+dependency between both of them. We call the model of such an ordered
+computation a `Schedule`. A schedule has an ordered list of symbolic pointers to
+the individual operators in the `trigger-chain` property. The model below shows
+the schedule for the full forward kinematics algorithm.
+
+```JSON
+{
+    "@id": "rob:schedule1",
+    "@type": "Schedule",
+    "trigger-chain": [ "rob:fpk1", "rob:compose-pose1" ]
+}
+```
+
 ## Acknowledgement
 
 This work is part of a project that has received funding from the European

@@ -1,0 +1,32 @@
+{
+    "@context": [
+        "/ontology/geometry/spatial-operators.json",
+        "/ontology/kinematic-chain/operators.json",
+        "/ontology/algorithm.json",
+        {
+            "rob": "http://example.org/my-robot#"
+        }
+    ],
+    "@id": "rob:fpk",
+    "@graph": [
+        {
+            "@id": "rob:fpk1",
+            "@type": "ForwardPositionKinematics",
+            "joint": "rob:joint1",
+            "joint-space-motion": "rob:q1",
+            "cartesian-space-motion": "rob:pose-link2-root-wrt-link1-joint1"
+        },
+        {
+            "@id": "rob:compose-pose1",
+            "@type": "ComposePose",
+            "pose1": "rob:pose-link1-joint1-wrt-link1-root",
+            "pose2": "rob:pose-link2-root-wrt-link1-joint1",
+            "pose-out": "rob:pose-link2-root-wrt-link1-root"
+        },
+        {
+            "@id": "rob:schedule1",
+            "@type": "Schedule",
+            "trigger-chain": [ "rob:fpk1", "rob:compose-pose1" ]
+        }
+    ]
+}
