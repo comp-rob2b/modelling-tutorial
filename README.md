@@ -63,8 +63,7 @@ represent the point of observation/measurement for twists and wrenches.
 The following example shows a point - that is meant to represent the origin of
 the "link1-joint1" frame - that lives in 3D Euclidean space as indicated by its
 type. As (Euclidean) space consists of an infinite amount of points, the
-interpretation of this model is that it designates one particular of those
-points.
+interpretation of this model is that it designates one particular instance.
 
 ```JSON
 {
@@ -109,11 +108,17 @@ is not relevant to the application.
 }
 ```
 Similar to the [previous example](#point), neither the `Vector` type nor the
-`UnitLength` type impose a structural constraint. However, the `BoundVector` has
-an impact on the structure of the model in that it does require the `start`
-property to be present. The metamodel defines the `start` property to be a
-symbolic pointer (an IRI) and the model shown here lets it refer to the point
-defined in the previous example.
+`UnitLength` type impose a structural constraint. We notice some mismatch in the
+terminology: one would usually not refer to "unit length" as a "type". It is
+actually a constraint that this model must conform to. Especially in the setting
+of defining a frame and later a standard basis of a vector space (see below),
+"unit length" must at some point be axiomatically grounded.
+
+In contrast to the previous two types, the `BoundVector` does have an impact on
+the structure of the model in that it does require the `start` property to be
+present. The metamodel defines the `start` property to be a symbolic pointer (an
+IRI) and the model shown here lets it refer to the point defined in the previous
+example.
 
 ### Frame
 A frame (of reference) in Euclidean space is an attachment point for orientation
@@ -238,10 +243,9 @@ exemplifies the textual representation of the former pose. A pose relates two
 frames which we call the `of` frame and the `with-respect-to` frame. An
 additional property of every position-based spatial relation is the quantity
 kind as used in dimensional analysis. Here, we reuse the
-[QUDT](#https://www.qudt.org/) ontology to represent quantity kinds. For any
-pose there will always be two quantity kinds, namely the `Angle` to represent
-the orientation part of the pose and the `Length` to represent the position
-part.
+[QUDT](https://www.qudt.org/) ontology to represent quantity kinds. For any pose
+there will always be two quantity kinds, namely the `Angle` to represent the
+orientation part of the pose and the `Length` to represent the position part.
 
 ```JSON
 {
@@ -453,8 +457,74 @@ the schedule for the full forward kinematics algorithm.
 }
 ```
 
-## Acknowledgement
+## Conclusions and discussion
+In this tutorial we have discussed how to build composable models for robots.
+Specifically, the tutorial has focused on the description of a kinematic chain's
+structure, including geometry, dynamics and motion constraints, as well as its
+behaviour in terms of a kinematics algorithm. While the example is a simple
+1-DoF kinematic chain the concepts transfer to more complex chains with tree
+structures or parallel structures and more complex algorithms such as solvers
+for problems involving velocities, accelerations or dynamics.
 
+While we have discussed how to construct the models, we have not described why
+they are composable. We consider the following points as core contributors
+towards composability:
+
+* The first class comprises the *structure* of models and metamodels:
+  - Every model has an *identifier*, the `@id`, and hence can be referenced from
+    other models. In other words *every* model is reified. The reification of
+    relations enables higher-order relations and indeed the majority of models
+    are actually higher-order composition structures.
+  - The identifiers in the form of *symbolic pointers* also contribute to the
+    loose coupling of models: symbolic pointers do not impose type constraints
+    and additionally they separate the specification of the symbolic pointer
+    from it resolution.
+  - In contrast to the more common, human-facing domain-specific languages
+    (DSL), composable models appear in some sense *inverted*. DSLs frequently
+    feature a single top-level concept (with vagues or sometimes even ambiguous
+    names such as "package" or "document"). Then any further concept must be
+    placed somewhere hierarchically below that top-level concept. As a
+    consequence any change to the lower concepts propagates up in the hierarchy,
+    meaning that the whole metamodel must be developed in lock-step. Once all
+    changes are incorporated a new version of *the* language can be released. In
+    contrast, composable models are not restricted towards the "top". Metamodels
+    can originate from diverse sources that can remain loosely coupled and
+    developed independently.
+* A further contributor is the conscious *design* of models and metamodels,
+  often following established best practices:
+  - Good metamodels should be *normalized*, as in database normalization, which
+    means that they separate domain concepts as much as possible and leave no
+    implicit assumptions both in the structure and in the meaning of the
+    involved terminology. As a result, a model should specify exactly what is
+    required, neither more nor less.
+  - Closely related to the normalization is the clear separation of (intrinsic)
+    properties and (extrinsic) attributes. The former should be part of models
+    whereas the latter are usually better represented as (reified) relations.
+  - In most models above we have already seen the utility of
+    *multi-conformance*, i.e. a model can conform to more than one constraint as
+    imposed by a single type. Most state-of-the-art modelling approaches support
+    only single conformance of models to metamodels. That means a model has a
+    single type and all the model’s properties are defined in a single
+    metamodel. To emulate behaviour similar to multi-conformance, those
+    approaches rely on subsumption (`is-a`) relations on the metamodel level.
+* Finally, a key feature of composable models is the *open-world assumption*:
+  - For composable models there does not exist *the* global schema to check for
+    well-formedness. Instead, it is up to the tools to decide which structural
+    constraints they must enforce or check. For example, a simple viewer may
+    treat joints as primitives in its context while a code generator most likely
+    requires knowledge about the types of joints. Implementation-wise the
+    [SHACL](https://www.w3.org/TR/shacl/) W3C standard nicely complements this
+    effort by supporting composable well-formedness constraints.
+  - Recall that multiple entities like coordinate, shape or inertia
+    representations can be attached to a kinematic chain. But it is *not* the
+    decision of the kinematic chain model to "close the world", i.e. to decide
+    which of those representations to use in a specific context. Instead, this
+    decision is left to some higher-order or application-level model.
+  - When multiple JSON objects have the same `@id` they all refer to the same
+    entity. Hence, a model can be logically separated. Note that we have not
+    made use of this feature here.
+
+## Acknowledgement
 This work is part of a project that has received funding from the European
 Union's Horizon 2020 research and innovation programme SESAME under grant
 agreement No 101017258.
