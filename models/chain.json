@@ -2,7 +2,7 @@
     "@context": [
         "/ontology/kinematic-chain/structural-entities.json",
         {
-            "rob": "http://example.org/my-robot#"
+            "rob": "https://comp-rob2b.github.io/modelling-tutorial/robot#"
         }
     ],
     "@id": "rob:chain",

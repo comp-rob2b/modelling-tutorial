@@ -3,7 +3,7 @@
         "/ontology/geometry/coordinates.json",
         "/ontology/qudt.json",
         {
-            "rob": "http://example.org/my-robot#"
+            "rob": "https://comp-rob2b.github.io/modelling-tutorial/robot#"
         }
     ],
     "@id": "rob:cartesian-coordinates",

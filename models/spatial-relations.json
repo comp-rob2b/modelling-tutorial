@@ -3,7 +3,7 @@
         "/ontology/geometry/spatial-relations.json",
         "/ontology/qudt.json",
         {
-            "rob": "http://example.org/my-robot#"
+            "rob": "https://comp-rob2b.github.io/modelling-tutorial/robot#"
         }
     ],
     "@id": "rob:spatial-relations",
