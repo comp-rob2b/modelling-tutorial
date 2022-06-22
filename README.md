@@ -37,7 +37,7 @@ Finally, a graph can be reified using the `@graph` keyword.
 
 ## Skeleton
 The first step is to create the "[skeleton](models/skeleton.json)" or "stick
-figure" for the bodies in the kinematic chain. By skeleton we mean the bare
+figure" for the bodies in the kinematic chain. By skeleton, we mean the bare
 minimum structure to which we attach further models. Here, the skeleton consists
 of points, vectors and frames as shown in the following diagram (Figure 2). The
 arrows indicate that the origins of both frames coincide, but for better
@@ -48,7 +48,7 @@ readability both frames are spatially separated in the figure.
 | Figure 2: Skeleton of the kinematic chain example |
 
 Note that the links' spatial extent or shape is not part of the skeleton.
-Instead it is one of the possible attachements to entities in the skeleton. All
+Instead, it is one of the possible attachments to entities in the skeleton. All
 attachments, some of them discussed below, are independent of each other and
 only refer to the common elements defined in the "skeleton".
 
@@ -57,12 +57,12 @@ The point is the most primitive entity in any space. In the context of robotics
 the objectives of points are multi-fold. They are the building block of further
 geometric entities e.g. line segments, vectors or frames as we will see below.
 Points also play various roles in encoding spatial relations or dynamic
-quantities. For instance, they are required to define positions or they
+quantities. For instance, they are required to define positions, or they
 represent the point of observation/measurement for twists and wrenches.
 
 The following example shows a point - that is meant to represent the origin of
 the "link1-joint1" frame - that lives in 3D Euclidean space as indicated by its
-type. As (Euclidean) space consists of an inifinite amount of points, the
+type. As (Euclidean) space consists of an infinite amount of points, the
 interpretation of this model is that it designates one particular of those
 points.
 
@@ -96,7 +96,7 @@ Euclidean space distinguishes two types of vectors:
 
 The following model exemplifies a bound vector that will represent the
 x-direction of the "link1-joint1" frame. Hence, we also impose the constraint
-that it should be of unit length (this constraint is valid only in metric spaces 
+that it should be of unit length (this constraint is valid only in metric spaces
 such as Euclidean space). Also note that we omit the end point because here it
 is not relevant to the application.
 
@@ -205,7 +205,7 @@ parameter representation will be attached to a link in the discussion of
 The first type of "declarative" spatial relations defined in the
 [spatial relations model](models/spatial-relations.json) represents the
 collinearity of two lines or rather vectors. Namely, the z-vectors of the
-link1-joint" and "link2-root" frames. The reason for this constraint relation is
+"link1-joint" and "link2-root" frames. The reason for this constraint relation is
 that a revolute joint requires a common axis that is fixed to both rigid bodies
 and around which the rotation occurs. The following model exemplifies this
 constraint for "joint1".
@@ -261,7 +261,7 @@ frames it follows that it also characterizes the pose between the rigid bodies
 By separating the pose from the frames which it relates, we enable a modeller to
 associate multiple poses with a frame. This is a more faithful representation of
 poses than treating them as properties of frames as is often found in
-state-of-the-art modelling approaches. However, it also allows to create cycles
+state-of-the-art modelling approaches. However, it also allows creating cycles
 of poses. Whenever such a situation occurs, the poses accumulated along each
 path in the cycle must be consistent. While we have chosen the pose as an
 example, all arguments in this paragraph hold for any spatial relation.
@@ -280,7 +280,7 @@ be available during the robot's runtime and will be acquired by some sensor.
 ```JSON
 {
     "@id": "rob:pose-link1-joint1-wrt-link1-root-coord",
-    "@type": [ "3D", "Euclidean", "PoseReference", 
+    "@type": [ "3D", "Euclidean", "PoseReference",
                "PoseCoordinate", "DirectionCosineXYZ",
                "VectorXYZ" ],
     "of-pose": "rob:pose-link1-joint1-wrt-link1-root",
@@ -315,7 +315,7 @@ A wide range of coordinate representations of positions, orientations and poses
 exist such as cylindrical, spherical or projective/homogeneous coordinates, all
 of which require their own model and metamodel representations. Similarly,
 velocity and acceleration representations demand for further metamodels.
-Discussing those is out of scope for this document, though.
+Discussing those metamodels, however, is out of scope for this document.
 
 ## Dynamics
 The equations of motion for mechanical systems are of second-order, i.e. the
@@ -365,7 +365,7 @@ just independent of a reference point or coordinate frame.
 
 ## Kinematic chain
 The [kinematic chain model](models/chain.json) shows two types of motion
-constraints. The joint is the most simple motion constraint between attachments
+constraints. The joint is the simplest motion constraint between attachments
 such as frames on two bodies. In the following example we recognize this by the
 `between-attachments` property. More specifically the joint is a revolute joint
 as already mentioned before. Hence, two more properties are required: the
