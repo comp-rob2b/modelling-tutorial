@@ -325,7 +325,7 @@ Discussing those metamodels, however, is out of scope for this document.
 The equations of motion for mechanical systems are of second-order, i.e. the
 Newton-Euler equations for a rigid body relate acceleration and force via the
 body's inertia. Hence, for solving those equations a specification of the
-inertia is required as shown in the [dynamics model](model/dynamics.json).
+inertia is required as shown in the [dynamics model](models/dynamics.json).
 
 The following diagram (Figure 5) graphically represents three types of inertia
 attachments: a point mass $m$, a rotational inertia modelled by the principal
