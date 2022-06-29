@@ -457,7 +457,7 @@ the schedule for the full forward kinematics algorithm.
 }
 ```
 
-## Conclusions and discussion
+## Discussion about composable models
 In this tutorial we have discussed how to build composable models for robots.
 Specifically, the tutorial has focused on the description of a kinematic chain's
 structure, including geometry, dynamics and motion constraints, as well as its
