@@ -26,14 +26,14 @@ and the [Semantic Web](https://www.w3.org/standards/semanticweb/) with all its
 established tools.
 
 JSON-LD introduces several keywords that recur in the models so that we briefly
-explain them here. First, each model can be identified by and identifier, an
+explain them here. First, each model can be identified by an identifier, an
 Internationalized Resource Identifier (IRI), with the `@id` property. Second,
-one or more types (also IRIs) can be associated to a model by using the `@type`
-property. Third, `@context` indicates a context which describes the mapping
-between the JSON world and the Semantic Web world. In other words, the context
-defines the metamodels that a model conforms to. Common contexts or elements
-can be hoisted out of a model to a composition model (e.g. the "document root").
-Finally, a graph can be reified using the `@graph` keyword.
+one or more types (also IRIs) can be associated with a model by using the
+`@type` property. Third, `@context` indicates a context which describes the
+mapping between the JSON world and the Semantic Web world. In other words, the
+context defines the metamodels that a model conforms to. Common contexts or
+elements can be hoisted out of a model to a composition model (e.g. the
+"document root"). Finally, a graph can be reified using the `@graph` keyword.
 
 ## Skeleton
 The first step is to create the "[skeleton](models/skeleton.json)" or "stick
@@ -54,14 +54,14 @@ only refer to the common elements defined in the "skeleton".
 
 ### Point
 The point is the most primitive entity in any space. In the context of robotics
-the objectives of points are multi-fold. They are the building block of further
+the purposes of points are multi-fold. They are the building block of further
 geometric entities e.g. line segments, vectors or frames as we will see below.
 Points also play various roles in encoding spatial relations or dynamic
 quantities. For instance, they are required to define positions, or they
 represent the point of observation/measurement for twists and wrenches.
 
-The following example shows a point - that is meant to represent the origin of
-the "link1-joint1" frame - that lives in 3D Euclidean space as indicated by its
+The following example shows a point — that is meant to represent the origin of
+the "link1-joint1" frame — that lives in 3D Euclidean space as indicated by its
 type. As (Euclidean) space consists of an infinite amount of points, the
 interpretation of this model is that it designates one particular instance.
 
